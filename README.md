@@ -2,7 +2,7 @@
 Banking System 
 
 Members:
-Alina Moughal, Phi Huynh, Ashraf Kizito, Alioune Mbaye, Fox Zhang.  
+Alina Moughal, Phi Huynh, Ashraf Kizito, Alioune Mbaye, Fox Zhang, Jacob Kucinski.  
 
 Roles: 
 Project Manager-Alina, Coder-Phi Huynh, Tester-Alioune Mbaye, Frontend Developer-Fox Zhang, Systems Analyst-Ashraf Kizito. 
@@ -10,6 +10,7 @@ Project Manager-Alina, Coder-Phi Huynh, Tester-Alioune Mbaye, Frontend Developer
 Project description:
 Our group project focuses on developing a Banking System using IntelliJ- JAVA. The system is designed to allow users to create and manage bank accounts, perform deposits and withdrawals, check balances, and maintain transaction records. It demonstrates the use of object-oriented programming principles. The project’s main goal is to simulate a real-world banking operation, but in simpler terms. Showing how, as a group, we work together to develop a successful running program.
 
+Task 2:
 Pseudocode:
 START {
 
@@ -50,4 +51,123 @@ FUNCTION isValidPassword(password) {
   RETURN false
 
 } END FUNCTION
+
+Task 3: 
+Docker is a platform that lets you package applications and their dependencies into lightweight, portable containers. These containers ensure your app runs the same way on any system regardless of the operating system or setup. Everything it needs (like libraries, runtime, and configuration) is bundled inside the container. This makes development, testing, and deployment faster and more consistent.
+
+Task 4: 
+
+ Overview
+
+In this task, we containerized a simple Java application using Docker and automated the build and push process to Docker Hub using GitHub Actions.
+
+Steps Performed
+
+1. Dockerfile Setup
+   Created a Dockerfile using the `openjdk:23` base image.
+   The file copies Java source files, compiles them, and runs the `HelloWorld` class.
+
+   ```dockerfile
+   FROM openjdk:23
+   WORKDIR /app
+   COPY src/ /app/
+   RUN javac *.java
+   CMD ["java", "HelloWorld"]
+   ```
+
+2. Docker Hub Configuration
+
+   * Logged into Docker Hub.
+   * Created a **Personal Access Token** with read/write/delete permissions.
+   * Saved credentials for use in GitHub Secrets (`DOCKER_USERNAME` and `DOCKER_PASSWORD`).
+
+3. GitHub Actions Workflow
+
+   * Created a workflow file: `.github/workflows/docker.yml`.
+   * Configured it to automatically build and push the Docker image to Docker Hub whenever changes are pushed to the `master` branch.
+
+4. Automation Trigger
+
+   * Committed and pushed changes to GitHub.
+   * The GitHub Action built the Docker image and pushed it to Docker Hub automatically.
+
+5. Run Docker Image
+   Pulled and ran the image from Docker Hub:
+
+   ```bash
+   docker pull your-dockerhub-username/hello-world:latest
+   docker run your-dockerhub-username/hello-world:latest
+   ```
+
+### Result
+
+Successfully automated the process of building and deploying a Dockerized Java app using GitHub Actions and Docker Hub.
+
+ask 4: JavaDocs & GitHub Pages
+
+This task involves adding JavaDoc comments to the project, generating documentation, and hosting it using GitHub Pages.
+
+📝 JavaDocs Added
+
+Java classes and methods were updated with JavaDoc comments using tags like:
+
+/**
+ * Example description.
+ * @author Name
+ * @version 1.0
+ */
+
+🧠 Generating JavaDocs
+Option 1: IntelliJ IDEA
+
+Go to Tools → Generate JavaDoc…
+
+Set Output directory: docs/
+
+Select project scope
+
+Generate and open docs/index.html
+
+Option 2: Terminal
+javadoc -d docs -sourcepath src -subpackages your.package.name
+
+
+Example:
+
+javadoc -d docs -sourcepath src -subpackages com.example.myapp
+
+🌐 Hosting with GitHub Pages
+
+Go to Settings → Pages
+
+Source:
+
+Branch: main
+
+Folder: /docs
+
+Save
+
+Your docs will be available at:
+https://your-username.github.io/your-repo-name/
+
+📄 Why JavaDocs?
+
+Improves readability
+
+Helps maintain and understand the code
+
+Creates professional project documentation
+
+📤 Submission Checklist
+
+Code pushed to GitHub
+
+JavaDocs generated and hosted
+
+Stories created on GitHub project board
+
+README updated
+
+Submit GitHub repo URL + GitHub Pages URL
 
